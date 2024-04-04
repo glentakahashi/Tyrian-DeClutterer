@@ -44,13 +44,13 @@ namespace TYR_DeClutterer
         public static ConfigEntry<bool> framesaverLightingShadowsEnabledConfig;
         public static ConfigEntry<bool> framesaverLightingShadowCascadesEnabledConfig;
         public static ConfigEntry<bool> framesaverWeatherUpdatesEnabledConfig;
-        public static ConfigEntry<bool> framesaverTexturesEnabledConfig;
+        // public static ConfigEntry<bool> framesaverTexturesEnabledConfig;
         public static ConfigEntry<bool> framesaverLODEnabledConfig;
         public static ConfigEntry<bool> framesaverFireAndSmokeEnabledConfig;
         public static ConfigEntry<int> framesaverParticleBudgetDividerConfig;
         public static ConfigEntry<int> framesaverPixelLightDividerConfig;
         public static ConfigEntry<int> framesaverShadowDividerConfig;
-        public static ConfigEntry<int> framesaverTextureSizeConfig;
+        // public static ConfigEntry<int> framesaverTextureSizeConfig;
         public static ConfigEntry<float> framesaverLODBiasConfig;
         public static bool applyDeclutter = false;
         public static bool defaultsoftParticles = false;
@@ -60,7 +60,7 @@ namespace TYR_DeClutterer
         public static int defaultpixelLightCount = 0;
         public static ShadowQuality defaultShadows;
         public static int defaultshadowCascades = 0;
-        public static int defaultmasterTextureLimit = 0;
+        // public static int defaultmasterTextureLimit = 0;
         public static float defaultlodBias = 0f;
 
         private void Awake()
@@ -74,7 +74,7 @@ namespace TYR_DeClutterer
             declutterSpentCartridgesEnabledConfig = Config.Bind("B - De-Clutter Settings", "C - Spent Cartridges De-Clutter", true, "De-Clutters pre-generated spent ammunition on floor.");
             declutterFakeFoodEnabledConfig = Config.Bind("B - De-Clutter Settings", "D - Fake Food De-Clutter", true, "De-Clutters fake 'food' items.");
             declutterDecalsEnabledConfig = Config.Bind("B - De-Clutter Settings", "E - Decal De-Clutter", true, "De-Clutters decals (Blood, grafiti, etc.)");
-            declutterPuddlesEnabledConfig = Config.Bind("B - De-Clutter Settings", "F - Puddle De-Clutter", true, "De-Clutters fake reflective puddles.");  
+            declutterPuddlesEnabledConfig = Config.Bind("B - De-Clutter Settings", "F - Puddle De-Clutter", true, "De-Clutters fake reflective puddles.");
             declutterShardsEnabledConfig = Config.Bind("B - De-Clutter Settings", "G - Glass & Tile Shards", true, "De-Clutters things labeled 'shards' or similar. The things you can step on that make noise.");
             declutterUnscrutinizedEnabledConfig = Config.Bind("B - De-Clutter Settings", "H - Experimental Unscrutinized Disabler", false, "De-Clutters literally everything that doesn't have a collider, doesn't chare what the name is or the group is so above enablers will have no effect. It'll disable it all. Experimental, testing however has had positive results. Massively improves FPS.");
             framesaverEnabledConfig = Config.Bind("C - Framesaver Enabler", "A - Framesaver Enabled", false, "Enables Ari's Framesaver methods, with some of my additions.");
@@ -87,12 +87,12 @@ namespace TYR_DeClutterer
             framesaverLightingShadowsEnabledConfig = Config.Bind("C - Framesaver Enabler", "H - Lighting & Shadow Changes", false, "Enables lighting & shadow changes.");
             framesaverLightingShadowCascadesEnabledConfig = Config.Bind("C - Framesaver Enabler", "I - Shadow Cascade Changes", false, "Enables shadow cascade changes.");
             framesaverWeatherUpdatesEnabledConfig = Config.Bind("C - Framesaver Enabler", "J - Cloud & Weather Changes", false, "Enables Cloud Shadow & Weather changes.");
-            framesaverTexturesEnabledConfig = Config.Bind("C - Framesaver Enabler", "K - Texture Changes", false, "Enables texture changes.");
+            // framesaverTexturesEnabledConfig = Config.Bind("C - Framesaver Enabler", "K - Texture Changes", false, "Enables texture changes.");
             framesaverLODEnabledConfig = Config.Bind("C - Framesaver Enabler", "L - LOD Changes", false, "Enables LOD changes.");
             framesaverParticleBudgetDividerConfig = Config.Bind<int>("D - Framesaver Settings", "A - Particle Quality Divider", 1, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Particle Quality.", new BepInEx.Configuration.AcceptableValueRange<int>(1, 4)));
             framesaverPixelLightDividerConfig = Config.Bind<int>("D - Framesaver Settings", "B - Lighting Quality Divider", 1, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Lighting Quality.", new BepInEx.Configuration.AcceptableValueRange<int>(1, 4)));
             framesaverShadowDividerConfig = Config.Bind<int>("D - Framesaver Settings", "C - Shadow Quality Divider", 1, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Shadow Quality.", new BepInEx.Configuration.AcceptableValueRange<int>(1, 4)));
-            framesaverTextureSizeConfig = Config.Bind<int>("D - Framesaver Settings", "D - Texture Size Divider", 1, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Texture Quality.", new BepInEx.Configuration.AcceptableValueRange<int>(1, 6)));
+            // framesaverTextureSizeConfig = Config.Bind<int>("D - Framesaver Settings", "D - Texture Size Divider", 1, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Texture Quality.", new BepInEx.Configuration.AcceptableValueRange<int>(1, 6)));
             framesaverLODBiasConfig = Config.Bind<float>("D - Framesaver Settings", "E - LOD Bias Reducer", 1.0f, new BepInEx.Configuration.ConfigDescription("1 is default, Higher number = Lower Model Quality.", new BepInEx.Configuration.AcceptableValueRange<float>(1.0f, 2.0f)));
             InitializeClutterNames();
 
@@ -106,12 +106,12 @@ namespace TYR_DeClutterer
             framesaverReflectionsEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverLightingShadowsEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverWeatherUpdatesEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
-            framesaverTexturesEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
+            // framesaverTexturesEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverLODEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverParticleBudgetDividerConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverPixelLightDividerConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverShadowDividerConfig.SettingChanged += OnApplyFramesaverSettingChanged;
-            framesaverTextureSizeConfig.SettingChanged += OnApplyFramesaverSettingChanged;
+            // framesaverTextureSizeConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverLODBiasConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             framesaverFireAndSmokeEnabledConfig.SettingChanged += OnApplyFramesaverSettingChanged;
             defaultsoftParticles = QualitySettings.softParticles;
@@ -121,163 +121,163 @@ namespace TYR_DeClutterer
             defaultpixelLightCount = QualitySettings.pixelLightCount;
             defaultShadows = QualitySettings.shadows;
             defaultshadowCascades = QualitySettings.shadowCascades;
-            defaultmasterTextureLimit = QualitySettings.masterTextureLimit;
+            // defaultmasterTextureLimit = QualitySettings.masterTextureLimit;
             defaultlodBias = QualitySettings.lodBias;
         }
 
         // Framesaver information and patches brought to you by Ari.
         private void OnApplyFramesaverSettingChanged(object sender, EventArgs e)
         {
-                if (framesaverEnabledConfig.Value)
+            if (framesaverEnabledConfig.Value)
+            {
+                if (framesaverPhysicsEnabledConfig.Value)
                 {
-                    if (framesaverPhysicsEnabledConfig.Value)
+                    new RagdollPhysicsLateUpdatePatch().Enable();
+                    new PhysicsUpdatePatch().Enable();
+                    new PhysicsFixedUpdatePatch().Enable();
+                }
+                else
+                {
+                    new RagdollPhysicsLateUpdatePatch().Disable();
+                    new PhysicsUpdatePatch().Disable();
+                    new PhysicsFixedUpdatePatch().Disable();
+                }
+                if (framesaverParticlesEnabledConfig.Value)
+                {
+                    QualitySettings.softParticles = false;
+                    if (framesaverParticleBudgetDividerConfig.Value > 1)
                     {
-                        new RagdollPhysicsLateUpdatePatch().Enable();
-                        new PhysicsUpdatePatch().Enable();
-                        new PhysicsFixedUpdatePatch().Enable();
-                    }
-                    else
-                    {
-                        new RagdollPhysicsLateUpdatePatch().Disable();
-                        new PhysicsUpdatePatch().Disable();
-                        new PhysicsFixedUpdatePatch().Disable();
-                    }
-                    if (framesaverParticlesEnabledConfig.Value)
-                    {
-                        QualitySettings.softParticles = false;
-                        if (framesaverParticleBudgetDividerConfig.Value > 1)
-                        {
-                            QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget / framesaverParticleBudgetDividerConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.softParticles = defaultsoftParticles;
-                        QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
-                    }
-                    if (framesaverSoftVegetationEnabledConfig.Value)
-                    {
-                        QualitySettings.softVegetation = false;
-                    }
-                    else
-                    {
-                        QualitySettings.softVegetation = defaultsoftVegetation;
-                    }
-                    if (framesaverReflectionsEnabledConfig.Value)
-                    {
-                        QualitySettings.realtimeReflectionProbes = false;
-                    }
-                    else
-                    {
-                        QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
-                    }
-                    if (framesaverLightingShadowsEnabledConfig.Value)
-                    {
-                        new AmbientLightOptimizeRenderingPatch().Enable();
-                        new AmbientLightDisableUpdatesPatch().Enable();
-                        new AmbientLightDisableLateUpdatesPatch().Enable();
-                    }
-                    else
-                    {
-                        new AmbientLightOptimizeRenderingPatch().Disable();
-                        new AmbientLightDisableUpdatesPatch().Disable();
-                        new AmbientLightDisableLateUpdatesPatch().Disable();
-                    }
-                    if (framesaverLightingShadowCascadesEnabledConfig.Value)
-                    {
-                        QualitySettings.shadows = ShadowQuality.HardOnly;
-                        if (framesaverShadowDividerConfig.Value > 1)
-                        {
-                            QualitySettings.pixelLightCount = 4 / framesaverPixelLightDividerConfig.Value;
-                            QualitySettings.shadowCascades = 4 / framesaverShadowDividerConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.pixelLightCount = defaultpixelLightCount;
-                        QualitySettings.shadows = defaultShadows;
-                        QualitySettings.shadowCascades = defaultshadowCascades;
-                    }
-                    if (framesaverTexturesEnabledConfig.Value)
-                    {
-                        if (framesaverTextureSizeConfig.Value > 1)
-                        {
-                            QualitySettings.masterTextureLimit = 0 + framesaverTextureSizeConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
-                    }
-                    if (framesaverLODEnabledConfig.Value)
-                    {
-                        if (framesaverLODBiasConfig.Value > 1.0f)
-                        {
-                            QualitySettings.lodBias = 2.0f / framesaverLODBiasConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.lodBias = defaultlodBias;
-                    }
-                    if (framesaverShellChangesEnabledConfig.Value)
-                    {
-                        new DontSpawnShellsFiringPatch().Enable();
-                        new DontSpawnShellsJamPatch().Enable();
-                        new DontSpawnShellsAtAllReallyPatch().Enable();
-                    }
-                    else
-                    {
-                        new DontSpawnShellsFiringPatch().Disable();
-                        new DontSpawnShellsJamPatch().Disable();
-                        new DontSpawnShellsAtAllReallyPatch().Disable();
-                    }
-                    if (framesaverWeatherUpdatesEnabledConfig.Value)
-                    {
-                        new SkyDelayUpdatesPatch().Enable();
-                        new WeatherLateUpdatePatch().Enable();
-                        new CloudsControllerDelayUpdatesPatch().Enable();
-                        new WeatherEventControllerDelayUpdatesPatch().Enable();
-                    }
-                    else
-                    {
-                        new SkyDelayUpdatesPatch().Disable();
-                        new WeatherLateUpdatePatch().Disable();
-                        new CloudsControllerDelayUpdatesPatch().Disable();
-                        new WeatherEventControllerDelayUpdatesPatch().Disable();
-                    }
-                    if (framesaverFireAndSmokeEnabledConfig.Value)
-                    {
-                        new FlameDamageTriggerPatch().Enable();
-                    }
-                    else
-                    {
-                        new FlameDamageTriggerPatch().Disable();
+                        QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget / framesaverParticleBudgetDividerConfig.Value;
                     }
                 }
                 else
                 {
                     QualitySettings.softParticles = defaultsoftParticles;
                     QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
+                }
+                if (framesaverSoftVegetationEnabledConfig.Value)
+                {
+                    QualitySettings.softVegetation = false;
+                }
+                else
+                {
                     QualitySettings.softVegetation = defaultsoftVegetation;
+                }
+                if (framesaverReflectionsEnabledConfig.Value)
+                {
+                    QualitySettings.realtimeReflectionProbes = false;
+                }
+                else
+                {
                     QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
-                    QualitySettings.pixelLightCount = defaultpixelLightCount;
-                    QualitySettings.shadows = defaultShadows;
-                    QualitySettings.shadowCascades = defaultshadowCascades;
-                    QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
-                    QualitySettings.lodBias = defaultlodBias;
-                    new PhysicsUpdatePatch().Disable();
-                    new PhysicsFixedUpdatePatch().Disable();
-                    new RagdollPhysicsLateUpdatePatch().Disable();
+                }
+                if (framesaverLightingShadowsEnabledConfig.Value)
+                {
+                    new AmbientLightOptimizeRenderingPatch().Enable();
+                    new AmbientLightDisableUpdatesPatch().Enable();
+                    new AmbientLightDisableLateUpdatesPatch().Enable();
+                }
+                else
+                {
                     new AmbientLightOptimizeRenderingPatch().Disable();
                     new AmbientLightDisableUpdatesPatch().Disable();
                     new AmbientLightDisableLateUpdatesPatch().Disable();
+                }
+                if (framesaverLightingShadowCascadesEnabledConfig.Value)
+                {
+                    QualitySettings.shadows = ShadowQuality.HardOnly;
+                    if (framesaverShadowDividerConfig.Value > 1)
+                    {
+                        QualitySettings.pixelLightCount = 4 / framesaverPixelLightDividerConfig.Value;
+                        QualitySettings.shadowCascades = 4 / framesaverShadowDividerConfig.Value;
+                    }
+                }
+                else
+                {
+                    QualitySettings.pixelLightCount = defaultpixelLightCount;
+                    QualitySettings.shadows = defaultShadows;
+                    QualitySettings.shadowCascades = defaultshadowCascades;
+                }
+                // if (framesaverTexturesEnabledConfig.Value)
+                // {
+                //     if (framesaverTextureSizeConfig.Value > 1)
+                //     {
+                //         QualitySettings.masterTextureLimit = 0 + framesaverTextureSizeConfig.Value;
+                //     }
+                // }
+                // else
+                // {
+                //     QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
+                // }
+                if (framesaverLODEnabledConfig.Value)
+                {
+                    if (framesaverLODBiasConfig.Value > 1.0f)
+                    {
+                        QualitySettings.lodBias = 2.0f / framesaverLODBiasConfig.Value;
+                    }
+                }
+                else
+                {
+                    QualitySettings.lodBias = defaultlodBias;
+                }
+                if (framesaverShellChangesEnabledConfig.Value)
+                {
+                    new DontSpawnShellsFiringPatch().Enable();
+                    new DontSpawnShellsJamPatch().Enable();
+                    new DontSpawnShellsAtAllReallyPatch().Enable();
+                }
+                else
+                {
+                    new DontSpawnShellsFiringPatch().Disable();
+                    new DontSpawnShellsJamPatch().Disable();
+                    new DontSpawnShellsAtAllReallyPatch().Disable();
+                }
+                if (framesaverWeatherUpdatesEnabledConfig.Value)
+                {
+                    new SkyDelayUpdatesPatch().Enable();
+                    new WeatherLateUpdatePatch().Enable();
+                    new CloudsControllerDelayUpdatesPatch().Enable();
+                    new WeatherEventControllerDelayUpdatesPatch().Enable();
+                }
+                else
+                {
                     new SkyDelayUpdatesPatch().Disable();
                     new WeatherLateUpdatePatch().Disable();
                     new CloudsControllerDelayUpdatesPatch().Disable();
                     new WeatherEventControllerDelayUpdatesPatch().Disable();
+                }
+                if (framesaverFireAndSmokeEnabledConfig.Value)
+                {
+                    new FlameDamageTriggerPatch().Enable();
+                }
+                else
+                {
                     new FlameDamageTriggerPatch().Disable();
                 }
+            }
+            else
+            {
+                QualitySettings.softParticles = defaultsoftParticles;
+                QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
+                QualitySettings.softVegetation = defaultsoftVegetation;
+                QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
+                QualitySettings.pixelLightCount = defaultpixelLightCount;
+                QualitySettings.shadows = defaultShadows;
+                QualitySettings.shadowCascades = defaultshadowCascades;
+                // QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
+                QualitySettings.lodBias = defaultlodBias;
+                new PhysicsUpdatePatch().Disable();
+                new PhysicsFixedUpdatePatch().Disable();
+                new RagdollPhysicsLateUpdatePatch().Disable();
+                new AmbientLightOptimizeRenderingPatch().Disable();
+                new AmbientLightDisableUpdatesPatch().Disable();
+                new AmbientLightDisableLateUpdatesPatch().Disable();
+                new SkyDelayUpdatesPatch().Disable();
+                new WeatherLateUpdatePatch().Disable();
+                new CloudsControllerDelayUpdatesPatch().Disable();
+                new WeatherEventControllerDelayUpdatesPatch().Disable();
+                new FlameDamageTriggerPatch().Disable();
+            }
         }
         private void OnApplyDeclutterSettingChanged(object sender, EventArgs e)
         {
@@ -331,156 +331,156 @@ namespace TYR_DeClutterer
         }
         private void DeClutterVisuals()
         {
-                if (framesaverEnabledConfig.Value)
+            if (framesaverEnabledConfig.Value)
+            {
+                if (framesaverPhysicsEnabledConfig.Value)
                 {
-                    if (framesaverPhysicsEnabledConfig.Value)
+                    new RagdollPhysicsLateUpdatePatch().Enable();
+                    new PhysicsUpdatePatch().Enable();
+                    new PhysicsFixedUpdatePatch().Enable();
+                }
+                else
+                {
+                    new RagdollPhysicsLateUpdatePatch().Disable();
+                    new PhysicsUpdatePatch().Disable();
+                    new PhysicsFixedUpdatePatch().Disable();
+                }
+                if (framesaverParticlesEnabledConfig.Value)
+                {
+                    QualitySettings.softParticles = false;
+                    if (framesaverParticleBudgetDividerConfig.Value > 1)
                     {
-                        new RagdollPhysicsLateUpdatePatch().Enable();
-                        new PhysicsUpdatePatch().Enable();
-                        new PhysicsFixedUpdatePatch().Enable();
-                    }
-                    else
-                    {
-                        new RagdollPhysicsLateUpdatePatch().Disable();
-                        new PhysicsUpdatePatch().Disable();
-                        new PhysicsFixedUpdatePatch().Disable();
-                    }
-                    if (framesaverParticlesEnabledConfig.Value)
-                    {
-                        QualitySettings.softParticles = false;
-                        if (framesaverParticleBudgetDividerConfig.Value > 1)
-                        {
-                            QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget / framesaverParticleBudgetDividerConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.softParticles = defaultsoftParticles;
-                        QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
-                    }
-                    if (framesaverSoftVegetationEnabledConfig.Value)
-                    {
-                        QualitySettings.softVegetation = false;
-                    }
-                    else
-                    {
-                        QualitySettings.softVegetation = defaultsoftVegetation;
-                    }
-                    if (framesaverReflectionsEnabledConfig.Value)
-                    {
-                        QualitySettings.realtimeReflectionProbes = false;
-                    }
-                    else
-                    {
-                        QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
-                    }
-                    if (framesaverLightingShadowsEnabledConfig.Value)
-                    {
-                        new AmbientLightOptimizeRenderingPatch().Enable();
-                        new AmbientLightDisableUpdatesPatch().Enable();
-                        new AmbientLightDisableLateUpdatesPatch().Enable();
-                    }
-                    else
-                    {
-                        new AmbientLightOptimizeRenderingPatch().Disable();
-                        new AmbientLightDisableUpdatesPatch().Disable();
-                        new AmbientLightDisableLateUpdatesPatch().Disable();
-                    }
-                    if (framesaverLightingShadowCascadesEnabledConfig.Value)
-                    {
-                        QualitySettings.shadows = ShadowQuality.HardOnly;
-                        if (framesaverShadowDividerConfig.Value > 1)
-                        {
-                            QualitySettings.pixelLightCount = 4 / framesaverPixelLightDividerConfig.Value;
-                            QualitySettings.shadowCascades = 4 / framesaverShadowDividerConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.pixelLightCount = defaultpixelLightCount;
-                        QualitySettings.shadows = defaultShadows;
-                        QualitySettings.shadowCascades = defaultshadowCascades;
-                    }
-                    if (framesaverTexturesEnabledConfig.Value)
-                    {
-                        if (framesaverTextureSizeConfig.Value > 1)
-                        {
-                            QualitySettings.masterTextureLimit = 0 + framesaverTextureSizeConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
-                    }
-                    if (framesaverLODEnabledConfig.Value)
-                    {
-                        if (framesaverLODBiasConfig.Value > 1.0f)
-                        {
-                            QualitySettings.lodBias = 2.0f / framesaverLODBiasConfig.Value;
-                        }
-                    }
-                    else
-                    {
-                        QualitySettings.lodBias = defaultlodBias;
-                    }
-                    if (framesaverShellChangesEnabledConfig.Value)
-                    {
-                        new DontSpawnShellsFiringPatch().Enable();
-                        new DontSpawnShellsJamPatch().Enable();
-                        new DontSpawnShellsAtAllReallyPatch().Enable();
-                    }
-                    else
-                    {
-                        new DontSpawnShellsFiringPatch().Disable();
-                        new DontSpawnShellsJamPatch().Disable();
-                        new DontSpawnShellsAtAllReallyPatch().Disable();
-                    }
-                    if (framesaverWeatherUpdatesEnabledConfig.Value)
-                    {
-                        new SkyDelayUpdatesPatch().Enable();
-                        new WeatherLateUpdatePatch().Enable();
-                        new CloudsControllerDelayUpdatesPatch().Enable();
-                        new WeatherEventControllerDelayUpdatesPatch().Enable();
-                    }
-                    else
-                    {
-                        new SkyDelayUpdatesPatch().Disable();
-                        new WeatherLateUpdatePatch().Disable();
-                        new CloudsControllerDelayUpdatesPatch().Disable();
-                        new WeatherEventControllerDelayUpdatesPatch().Disable();
-                    }
-                    if (framesaverFireAndSmokeEnabledConfig.Value)
-                    {
-                        new FlameDamageTriggerPatch().Enable();
-                    }
-                    else
-                    {
-                        new FlameDamageTriggerPatch().Disable();
+                        QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget / framesaverParticleBudgetDividerConfig.Value;
                     }
                 }
                 else
                 {
                     QualitySettings.softParticles = defaultsoftParticles;
                     QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
+                }
+                if (framesaverSoftVegetationEnabledConfig.Value)
+                {
+                    QualitySettings.softVegetation = false;
+                }
+                else
+                {
                     QualitySettings.softVegetation = defaultsoftVegetation;
+                }
+                if (framesaverReflectionsEnabledConfig.Value)
+                {
+                    QualitySettings.realtimeReflectionProbes = false;
+                }
+                else
+                {
                     QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
-                    QualitySettings.pixelLightCount = defaultpixelLightCount;
-                    QualitySettings.shadows = defaultShadows;
-                    QualitySettings.shadowCascades = defaultshadowCascades;
-                    QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
-                    QualitySettings.lodBias = defaultlodBias;
-                    new PhysicsUpdatePatch().Disable();
-                    new PhysicsFixedUpdatePatch().Disable();
-                    new RagdollPhysicsLateUpdatePatch().Disable();
+                }
+                if (framesaverLightingShadowsEnabledConfig.Value)
+                {
+                    new AmbientLightOptimizeRenderingPatch().Enable();
+                    new AmbientLightDisableUpdatesPatch().Enable();
+                    new AmbientLightDisableLateUpdatesPatch().Enable();
+                }
+                else
+                {
                     new AmbientLightOptimizeRenderingPatch().Disable();
                     new AmbientLightDisableUpdatesPatch().Disable();
                     new AmbientLightDisableLateUpdatesPatch().Disable();
+                }
+                if (framesaverLightingShadowCascadesEnabledConfig.Value)
+                {
+                    QualitySettings.shadows = ShadowQuality.HardOnly;
+                    if (framesaverShadowDividerConfig.Value > 1)
+                    {
+                        QualitySettings.pixelLightCount = 4 / framesaverPixelLightDividerConfig.Value;
+                        QualitySettings.shadowCascades = 4 / framesaverShadowDividerConfig.Value;
+                    }
+                }
+                else
+                {
+                    QualitySettings.pixelLightCount = defaultpixelLightCount;
+                    QualitySettings.shadows = defaultShadows;
+                    QualitySettings.shadowCascades = defaultshadowCascades;
+                }
+                // if (framesaverTexturesEnabledConfig.Value)
+                // {
+                //     if (framesaverTextureSizeConfig.Value > 1)
+                //     {
+                //         QualitySettings.masterTextureLimit = 0 + framesaverTextureSizeConfig.Value;
+                //     }
+                // }
+                // else
+                // {
+                //     QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
+                // }
+                if (framesaverLODEnabledConfig.Value)
+                {
+                    if (framesaverLODBiasConfig.Value > 1.0f)
+                    {
+                        QualitySettings.lodBias = 2.0f / framesaverLODBiasConfig.Value;
+                    }
+                }
+                else
+                {
+                    QualitySettings.lodBias = defaultlodBias;
+                }
+                if (framesaverShellChangesEnabledConfig.Value)
+                {
+                    new DontSpawnShellsFiringPatch().Enable();
+                    new DontSpawnShellsJamPatch().Enable();
+                    new DontSpawnShellsAtAllReallyPatch().Enable();
+                }
+                else
+                {
+                    new DontSpawnShellsFiringPatch().Disable();
+                    new DontSpawnShellsJamPatch().Disable();
+                    new DontSpawnShellsAtAllReallyPatch().Disable();
+                }
+                if (framesaverWeatherUpdatesEnabledConfig.Value)
+                {
+                    new SkyDelayUpdatesPatch().Enable();
+                    new WeatherLateUpdatePatch().Enable();
+                    new CloudsControllerDelayUpdatesPatch().Enable();
+                    new WeatherEventControllerDelayUpdatesPatch().Enable();
+                }
+                else
+                {
                     new SkyDelayUpdatesPatch().Disable();
                     new WeatherLateUpdatePatch().Disable();
                     new CloudsControllerDelayUpdatesPatch().Disable();
                     new WeatherEventControllerDelayUpdatesPatch().Disable();
+                }
+                if (framesaverFireAndSmokeEnabledConfig.Value)
+                {
+                    new FlameDamageTriggerPatch().Enable();
+                }
+                else
+                {
                     new FlameDamageTriggerPatch().Disable();
                 }
+            }
+            else
+            {
+                QualitySettings.softParticles = defaultsoftParticles;
+                QualitySettings.particleRaycastBudget = defaultparticleRaycastBudget;
+                QualitySettings.softVegetation = defaultsoftVegetation;
+                QualitySettings.realtimeReflectionProbes = defaultrealtimeReflectionProbes;
+                QualitySettings.pixelLightCount = defaultpixelLightCount;
+                QualitySettings.shadows = defaultShadows;
+                QualitySettings.shadowCascades = defaultshadowCascades;
+                // QualitySettings.masterTextureLimit = defaultmasterTextureLimit;
+                QualitySettings.lodBias = defaultlodBias;
+                new PhysicsUpdatePatch().Disable();
+                new PhysicsFixedUpdatePatch().Disable();
+                new RagdollPhysicsLateUpdatePatch().Disable();
+                new AmbientLightOptimizeRenderingPatch().Disable();
+                new AmbientLightDisableUpdatesPatch().Disable();
+                new AmbientLightDisableLateUpdatesPatch().Disable();
+                new SkyDelayUpdatesPatch().Disable();
+                new WeatherLateUpdatePatch().Disable();
+                new CloudsControllerDelayUpdatesPatch().Disable();
+                new WeatherEventControllerDelayUpdatesPatch().Disable();
+                new FlameDamageTriggerPatch().Disable();
+            }
         }
         private void DeClutterEnabled()
         {
@@ -584,10 +584,10 @@ namespace TYR_DeClutterer
                 bool isWindowBreaker = obj.GetComponent<WindowBreaker>() != null;
                 bool isBallisticCollider = obj.GetComponent<BallisticCollider>() != null;
                 bool isBotSpawner = obj.GetComponent<BotSpawner>() != null;
-                bool isBadThing = isTarkovContainer || isTarkovContainerGroup || isTarkovObservedItem || isTarkovItem || isTarkovWeaponMod || 
-                                  hasRainCondensator || isLocalPlayer || isPlayer || isBotOwner || isCullingObject || isCullingLightObject || 
-                                  isCullingGroup || isDisablerCullingObject || isObservedCullingManager || isPerfectCullingCrossSceneGroup || 
-                                  isBakedLodContent || isScreenDistanceSwitcher || isGuidComponent || isOcclusionPortal || isBotSpawner || 
+                bool isBadThing = isTarkovContainer || isTarkovContainerGroup || isTarkovObservedItem || isTarkovItem || isTarkovWeaponMod ||
+                                  hasRainCondensator || isLocalPlayer || isPlayer || isBotOwner || isCullingObject || isCullingLightObject ||
+                                  isCullingGroup || isDisablerCullingObject || isObservedCullingManager || isPerfectCullingCrossSceneGroup ||
+                                  isBakedLodContent || isScreenDistanceSwitcher || isGuidComponent || isOcclusionPortal || isBotSpawner ||
                                   isMultisceneSharedOccluder || isWindowBreaker || isBallisticCollider;
 
                 if (isGoodThing && !isBadThing)
@@ -830,79 +830,79 @@ namespace TYR_DeClutterer
             bool foundClutterName = false;
             bool dontDisableName = dontDisableDictionary.Keys.Any(key => obj.name.ToLower().Contains(key.ToLower()));
             //EFT.UI.ConsoleScreen.LogError("Found Lod Group " + obj.name);
-                if (declutterUnscrutinizedEnabledConfig.Value == true)
-                {
-                    foundClutterName = true;
-                }
-                else
-                {
-                    foundClutterName = clutterNameDictionary.Keys.Any(key => obj.name.ToLower().Contains(key.ToLower()));
-                }
-                if (foundClutterName && !dontDisableName)
-                {
+            if (declutterUnscrutinizedEnabledConfig.Value == true)
+            {
+                foundClutterName = true;
+            }
+            else
+            {
+                foundClutterName = clutterNameDictionary.Keys.Any(key => obj.name.ToLower().Contains(key.ToLower()));
+            }
+            if (foundClutterName && !dontDisableName)
+            {
                 //EFT.UI.ConsoleScreen.LogError("Found Clutter Name" + obj.name);
-                    foreach (Transform child in obj.transform)
-                    {
-                        childGameMeshObject = child.gameObject;
-                        bool isTarkovContainer = childGameMeshObject.GetComponent<LootableContainer>() != null;
-                        bool isTarkovContainerGroup = childGameMeshObject.GetComponent<LootableContainersGroup>() != null;
-                        bool isTarkovObservedItem = childGameMeshObject.GetComponent<ObservedLootItem>() != null;
-                        bool isTarkovItem = childGameMeshObject.GetComponent<LootItem>() != null;
-                        bool isTarkovWeaponMod = childGameMeshObject.GetComponent<WeaponModPoolObject>() != null;
-                        bool hasRainCondensator = childGameMeshObject.GetComponent<RainCondensator>() != null;
-                        bool isLocalPlayer = childGameMeshObject.GetComponent<LocalPlayer>() != null;
-                        bool isPlayer = childGameMeshObject.GetComponent<Player>() != null;
-                        bool isBotOwner = childGameMeshObject.GetComponent<BotOwner>() != null;
-                        bool isCullingObject = childGameMeshObject.GetComponent<CullingObject>() != null;
-                        bool isCullingLightObject = childGameMeshObject.GetComponent<CullingLightObject>() != null;
-                        bool isCullingGroup = childGameMeshObject.GetComponent<CullingGroup>() != null;
-                        bool isDisablerCullingObject = childGameMeshObject.GetComponent<DisablerCullingObject>() != null;
-                        bool isObservedCullingManager = childGameMeshObject.GetComponent<ObservedCullingManager>() != null;
-                        bool isPerfectCullingCrossSceneGroup = childGameMeshObject.GetComponent<PerfectCullingCrossSceneGroup>() != null;
-                        bool isScreenDistanceSwitcher = childGameMeshObject.GetComponent<ScreenDistanceSwitcher>() != null;
-                        bool isBakedLodContent = childGameMeshObject.GetComponent<BakedLodContent>() != null;
-                        bool isGuidComponent = childGameMeshObject.GetComponent<GuidComponent>() != null;
-                        bool isOcclusionPortal = childGameMeshObject.GetComponent<OcclusionPortal>() != null;
-                        bool isMultisceneSharedOccluder = childGameMeshObject.GetComponent<MultisceneSharedOccluder>() != null;
-                        bool isWindowBreaker = childGameMeshObject.GetComponent<WindowBreaker>() != null;
-                        bool isBotSpawner = childGameMeshObject.GetComponent<BotSpawner>() != null;
-                        bool isBadThing = isTarkovContainer || isTarkovContainerGroup || isTarkovObservedItem || isTarkovItem || isTarkovWeaponMod ||
-                                          hasRainCondensator || isLocalPlayer || isPlayer || isBotOwner || isCullingObject || isCullingLightObject ||
-                                          isCullingGroup || isDisablerCullingObject || isObservedCullingManager || isPerfectCullingCrossSceneGroup ||
-                                          isBakedLodContent || isScreenDistanceSwitcher || isGuidComponent || isOcclusionPortal || isBotSpawner ||
-                                          isMultisceneSharedOccluder || isWindowBreaker;
+                foreach (Transform child in obj.transform)
+                {
+                    childGameMeshObject = child.gameObject;
+                    bool isTarkovContainer = childGameMeshObject.GetComponent<LootableContainer>() != null;
+                    bool isTarkovContainerGroup = childGameMeshObject.GetComponent<LootableContainersGroup>() != null;
+                    bool isTarkovObservedItem = childGameMeshObject.GetComponent<ObservedLootItem>() != null;
+                    bool isTarkovItem = childGameMeshObject.GetComponent<LootItem>() != null;
+                    bool isTarkovWeaponMod = childGameMeshObject.GetComponent<WeaponModPoolObject>() != null;
+                    bool hasRainCondensator = childGameMeshObject.GetComponent<RainCondensator>() != null;
+                    bool isLocalPlayer = childGameMeshObject.GetComponent<LocalPlayer>() != null;
+                    bool isPlayer = childGameMeshObject.GetComponent<Player>() != null;
+                    bool isBotOwner = childGameMeshObject.GetComponent<BotOwner>() != null;
+                    bool isCullingObject = childGameMeshObject.GetComponent<CullingObject>() != null;
+                    bool isCullingLightObject = childGameMeshObject.GetComponent<CullingLightObject>() != null;
+                    bool isCullingGroup = childGameMeshObject.GetComponent<CullingGroup>() != null;
+                    bool isDisablerCullingObject = childGameMeshObject.GetComponent<DisablerCullingObject>() != null;
+                    bool isObservedCullingManager = childGameMeshObject.GetComponent<ObservedCullingManager>() != null;
+                    bool isPerfectCullingCrossSceneGroup = childGameMeshObject.GetComponent<PerfectCullingCrossSceneGroup>() != null;
+                    bool isScreenDistanceSwitcher = childGameMeshObject.GetComponent<ScreenDistanceSwitcher>() != null;
+                    bool isBakedLodContent = childGameMeshObject.GetComponent<BakedLodContent>() != null;
+                    bool isGuidComponent = childGameMeshObject.GetComponent<GuidComponent>() != null;
+                    bool isOcclusionPortal = childGameMeshObject.GetComponent<OcclusionPortal>() != null;
+                    bool isMultisceneSharedOccluder = childGameMeshObject.GetComponent<MultisceneSharedOccluder>() != null;
+                    bool isWindowBreaker = childGameMeshObject.GetComponent<WindowBreaker>() != null;
+                    bool isBotSpawner = childGameMeshObject.GetComponent<BotSpawner>() != null;
+                    bool isBadThing = isTarkovContainer || isTarkovContainerGroup || isTarkovObservedItem || isTarkovItem || isTarkovWeaponMod ||
+                                      hasRainCondensator || isLocalPlayer || isPlayer || isBotOwner || isCullingObject || isCullingLightObject ||
+                                      isCullingGroup || isDisablerCullingObject || isObservedCullingManager || isPerfectCullingCrossSceneGroup ||
+                                      isBakedLodContent || isScreenDistanceSwitcher || isGuidComponent || isOcclusionPortal || isBotSpawner ||
+                                      isMultisceneSharedOccluder || isWindowBreaker;
                     if (isBadThing)
-                        {
-                            return false;
-                        }
-                    }
-                    foreach (Transform child in obj.transform)
-                    {
-                            childGameMeshObject = child.gameObject;
-                            if (child.GetComponent<MeshRenderer>() != null && !childGameMeshObject.name.ToLower().Contains("shadow") && !childGameMeshObject.name.ToLower().StartsWith("col") && !childGameMeshObject.name.ToLower().EndsWith("der"))
-                            {
-                                childHasMesh = true;
-                                // Exit the loop since we've found what we need
-                                break;
-                            }
-                    }
-                    if (!childHasMesh && !isGoodThing)
                     {
                         return false;
                     }
-                    foreach (Transform child in obj.transform)
+                }
+                foreach (Transform child in obj.transform)
+                {
+                    childGameMeshObject = child.gameObject;
+                    if (child.GetComponent<MeshRenderer>() != null && !childGameMeshObject.name.ToLower().Contains("shadow") && !childGameMeshObject.name.ToLower().StartsWith("col") && !childGameMeshObject.name.ToLower().EndsWith("der"))
                     {
-                        if ((child.GetComponent<MeshCollider>() != null || child.GetComponent<BoxCollider>() != null) && child.GetComponent<BallisticCollider>() == null)
+                        childHasMesh = true;
+                        // Exit the loop since we've found what we need
+                        break;
+                    }
+                }
+                if (!childHasMesh && !isGoodThing)
+                {
+                    return false;
+                }
+                foreach (Transform child in obj.transform)
+                {
+                    if ((child.GetComponent<MeshCollider>() != null || child.GetComponent<BoxCollider>() != null) && child.GetComponent<BallisticCollider>() == null)
+                    {
+                        childGameColliderObject = child.gameObject;
+                        if (childGameColliderObject != null && childGameColliderObject.activeSelf)
                         {
-                            childGameColliderObject = child.gameObject;
-                            if (childGameColliderObject != null && childGameColliderObject.activeSelf)
-                            {
-                                childHasCollider = true;
-                                // Exit the loop since we've found what we need
-                                break;
-                            }
+                            childHasCollider = true;
+                            // Exit the loop since we've found what we need
+                            break;
                         }
                     }
+                }
                 if (isGoodThing)
                 {
                     sizeOnY = 0.1f;
@@ -916,11 +916,11 @@ namespace TYR_DeClutterer
                     return false;
                 }
                 if ((childHasMesh || isGoodThing) && (!childHasCollider || isGoodThing) && sizeOnY <= 2f * declutterScaleOffsetConfig.Value)
-                    {
-                        savedClutterObjects.Add(obj);
-                        return true;
-                    }
+                {
+                    savedClutterObjects.Add(obj);
+                    return true;
                 }
+            }
             return false;
         }
         private float GetMeshSizeOnY(GameObject childGameObject)
